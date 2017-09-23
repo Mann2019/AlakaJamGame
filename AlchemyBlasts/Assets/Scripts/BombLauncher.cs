@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class BombLauncher : MonoBehaviour {
 
     public float force;
+    public float horizontal;
+    public float explosionRadius=5f;
+    public LayerMask bombMask;
+    public GameObject explosion;
 
     private Rigidbody2D rbd;
 
@@ -12,19 +15,28 @@ public class BombLauncher : MonoBehaviour {
 	void Start () {
         rbd = gameObject.GetComponent<Rigidbody2D>();
         float vert = 2f;
-        float hor = 4f;
-        Vector2 diagonal = new Vector2(hor, vert);
+        Vector2 diagonal = new Vector2(horizontal, vert);
         rbd.AddForce(diagonal * force, ForceMode2D.Impulse);
     }
-	
-	// Update is called once per frame
-	/*void Update () {
-		if(Input.GetKeyDown(KeyCode.Space))
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, explosionRadius, bombMask);
+
+        for(int i=0;i<colls.Length;i++)
         {
-            float vert = 2f;
-            float hor = 2f;
-            Vector2 diagonal = new Vector2(hor,vert);
-            rbd.AddForce(diagonal * force, ForceMode2D.Impulse);
+            Collider2D coll = colls[i];
+            if (coll.CompareTag("Destroyable"))
+            {
+                Instantiate(explosion, coll.transform.position, coll.transform.rotation);
+                Destroy(coll.gameObject);
+            }
         }
-    }*/
+
+        if(collision.collider.CompareTag("Ground"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+    }
 }
