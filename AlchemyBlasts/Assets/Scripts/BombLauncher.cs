@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class BombLauncher : MonoBehaviour {
 
-    public int force;
+    public float force;
 
     private Rigidbody2D rbd;
 
 	// Use this for initialization
 	void Start () {
         rbd = gameObject.GetComponent<Rigidbody2D>();
-	}
+        float vert = 2f;
+        float hor = 4f;
+        Vector2 diagonal = new Vector2(hor, vert);
+        rbd.AddForce(diagonal * force, ForceMode2D.Impulse);
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		if(Input.GetKeyDown(KeyCode.Space))
         {
             float vert = 2f;
@@ -22,5 +26,5 @@ public class BombLauncher : MonoBehaviour {
             Vector2 diagonal = new Vector2(hor,vert);
             rbd.AddForce(diagonal * force, ForceMode2D.Impulse);
         }
-    }
+    }*/
 }
