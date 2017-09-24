@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-[System.Serializable]
-public class HighScores
-{
-    public int HighScore;
-}
 
 public class GameController : MonoBehaviour {
 
@@ -24,6 +19,7 @@ public class GameController : MonoBehaviour {
     public Toggle[] elements;
     public ToggleGroup elementsGroup;
     public Camera mainCam;
+    public GameObject menuPanel;
 
     public static int currentScore = 0;
 
@@ -38,6 +34,13 @@ public class GameController : MonoBehaviour {
     private float totalBm = 0f;
     private float totalHor = 0f;
     private float totalRad = 0f;
+    private int flag = 0;
+    //private int reset = 0;
+
+    public void ResetScores()
+    {
+        currentScore = 0;
+    }
 
     private void Start()
     {
@@ -97,6 +100,17 @@ public class GameController : MonoBehaviour {
         elemMassValue.text = ep.elemMass.ToString();
         elemPropValue.text = ep.hort.ToString();
         elemRadValue.text = ep.explodeRad.ToString();
+
+        if(flag==1&&(!weapon))
+        {
+            Invoke("PopMenu", 2f);
+        }
+    }
+
+    public void PopMenu()
+    {
+        flag = 0;
+        menuPanel.SetActive(true);
     }
 
     public void GenerateWeapon()
@@ -107,5 +121,11 @@ public class GameController : MonoBehaviour {
         bl.horizontal = bl.horizontal + totalHor;
         bl.bombMass = bl.bombMass + totalBm;
         bl.explosionRadius = bl.explosionRadius + totalRad;
+        flag = 1;
+    }
+
+    public void ChangeScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 }

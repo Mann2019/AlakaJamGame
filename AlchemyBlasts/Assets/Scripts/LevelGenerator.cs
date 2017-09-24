@@ -2,12 +2,16 @@
 
 public class LevelGenerator : MonoBehaviour {
 
-    public Texture2D level_map;
+    public Texture2D[] level_maps;
     public ColorToPrefab[] colorMappings;
+
+    private Texture2D level_map;
 
     // Use this for initialization
     void Start()
     {
+        int k = Random.Range(0, level_maps.Length);
+        level_map = level_maps[k];
         GenerateLevel();
     }
 

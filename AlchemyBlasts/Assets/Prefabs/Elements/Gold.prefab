@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885041ae56c009541888b3434cf97b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elemMass: 3
+  elemMass: 2
   hort: 3
-  explodeRad: 2
+  explodeRad: 1
