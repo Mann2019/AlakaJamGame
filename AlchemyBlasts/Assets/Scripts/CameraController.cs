@@ -10,8 +10,12 @@ public class CameraController : MonoBehaviour {
 
     private void LateUpdate()
     {
-        Vector3 desiredPos = target.position + offset;
-        Vector3 smootherPos = Vector3.SmoothDamp(transform.position, desiredPos,ref currentVelocity, smoothSpeed * Time.deltaTime);
-        transform.position = smootherPos;
+        if(target)
+        {
+            Vector3 pos = new Vector3(target.position.x, 11f, -10f);
+            Vector3 desiredPos = pos + offset;
+            Vector3 smootherPos = Vector3.SmoothDamp(transform.position, desiredPos, ref currentVelocity, smoothSpeed * Time.deltaTime);
+            transform.position = smootherPos;
+        }
     }
 }

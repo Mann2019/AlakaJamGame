@@ -120,8 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontal: 4
   vertical: 2
-  explosionRadius: 4
-  bombMass: 0.375
+  explosionRadius: 6
+  bombMass: 0.25
   bombMask:
     serializedVersion: 2
     m_Bits: 4294967295
