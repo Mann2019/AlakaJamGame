@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4074872985191032}
   - component: {fileID: 50419257359712632}
   - component: {fileID: 61684709575971972}
+  - component: {fileID: 114471240012550202}
   m_Layer: 0
   m_Name: Woodframe
   m_TagString: Destroyable
@@ -116,6 +117,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114471240012550202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176156144918538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45209f5b427ba0240b4749133ecd0d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 25
 --- !u!212 &212599261736620206
 SpriteRenderer:
   m_ObjectHideFlags: 1

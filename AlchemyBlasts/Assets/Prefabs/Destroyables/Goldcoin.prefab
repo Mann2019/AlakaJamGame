@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4309130824427694}
   - component: {fileID: 50382602447107788}
   - component: {fileID: 70289700311014910}
+  - component: {fileID: 114407675137428768}
   m_Layer: 0
   m_Name: Goldcoin
   m_TagString: Destroyable
@@ -106,6 +107,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03, y: 0.03}
   m_Size: {x: 0.55, y: 0.75}
   m_Direction: 0
+--- !u!114 &114407675137428768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1050573171074294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45209f5b427ba0240b4749133ecd0d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 100
 --- !u!212 &212188189157692282
 SpriteRenderer:
   m_ObjectHideFlags: 1

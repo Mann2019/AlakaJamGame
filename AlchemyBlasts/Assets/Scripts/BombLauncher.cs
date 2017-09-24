@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BombLauncher : MonoBehaviour {
 
-    public float force;
-    public float horizontal;
+    public float horizontal=4f;
+    public float vertical=2f;
     public float explosionRadius=5f;
+    public float bombMass = 0.25f;
     public LayerMask bombMask;
     public GameObject explosion;
 
     private Rigidbody2D rbd;
+    private float force = 1.2f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rbd = gameObject.GetComponent<Rigidbody2D>();
-        float vert = 2f;
-        Vector2 diagonal = new Vector2(horizontal, vert);
+        Vector2 diagonal = new Vector2(horizontal, vertical);
+        rbd.mass = bombMass;
         rbd.AddForce(diagonal * force, ForceMode2D.Impulse);
     }
 
@@ -28,6 +29,8 @@ public class BombLauncher : MonoBehaviour {
             Collider2D coll = colls[i];
             if (coll.CompareTag("Destroyable"))
             {
+                Scoring sc= coll.gameObject.GetComponent<Scoring>();
+                sc.IncrementScore();
                 Instantiate(explosion, coll.transform.position, coll.transform.rotation);
                 Destroy(coll.gameObject);
             }

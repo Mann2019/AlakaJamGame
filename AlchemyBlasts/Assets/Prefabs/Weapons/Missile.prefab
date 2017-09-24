@@ -118,9 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5727e9a95b22c408fae09635f5c51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1.2
   horizontal: 4
+  vertical: 2
   explosionRadius: 5
+  bombMass: 0.5
   bombMask:
     serializedVersion: 2
     m_Bits: 4294967295
